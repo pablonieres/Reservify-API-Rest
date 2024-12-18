@@ -5,22 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Appointment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password', 'role_id',
+        'reservation_id', 'date', 'time', 'location', 'status',
     ];
 
-    public function role()
+    public function reservation()
     {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
+        return $this->belongsTo(Reservation::class);
     }
 
     public function evaluations()
