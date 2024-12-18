@@ -2,22 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Appointment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Evaluation>
- */
 class EvaluationFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
+            'appointment_id' => Appointment::inRandomOrder()->first()->id ?? Appointment::factory(),
+            'rating' => $this->faker->numberBetween(1, 5),
+            'feedback' => $this->faker->sentence,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
