@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relación con el usuario
             $table->foreignId('service_id')->constrained()->onDelete('cascade'); // Relación con el producto/servicio
-            $table->timestamp('reservation_date');
+            $table->date('date_field');
             $table->string('location');
-            $table->string('time');
+            $table->time('time_field');
             $table->enum('status',['pendiente','pospuesta','cancelada']); // Estado de la reserva (pendiente, confirmada, cancelada, etc.)
             $table->timestamps();
         });
